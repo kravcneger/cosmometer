@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<title>Game</title>
+<meta charset="utf-8" />
+<script src="game_logic.js"></script>
+<script>
+	window.onload = function() {
+		document.getElementById("startGame").onclick = function() {
+			Game.stopGame();
+			var rows = document.getElementById("rows").value;
+			var columns = document.getElementById("columns").value;
+			var edge = document.getElementById("edge").value;
+			var speed = document.getElementById("speed").value;
+			Game.startGame(rows, columns, edge, speed);
+			this.blur();
+		};
+		document.getElementById("stopGame").onclick = function() {
+			Game.stopGame();
+			this.blur();
+		};		
+	};
+</script>
+</head>
+<body>
+	<table align="center">
+		<tr>
+			<td colspan="2">ctrl - обычный огонь, пробел - лазер</td>
+		</tr>
+		<tr>
+			<td rowspan="2">
+				<canvas id="place" align="center" style="border: 2px black solid;"></canvas>
+			</td>
+			<td>
+				<h2>
+					Очки - <span id="glasses"></span>
+				</h2>
+				<h2 style="color: red;">
+					Лазер - <span id="countBlaster"></span>
+				</h2>
+			</td>
+		</tr>
+		<tr>
+			<td><input type="text" id="rows" size="2" value="20" /> - Число
+				строк<br /> <input type="text" id="columns" size="2" value="20" />
+				- Число стобцов <br /> <input type="text" id="edge" size="2"
+				value="20" /> - Ширина клетки в px<br /> <select id="speed">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+					<option selected="selected">7</option>
+					<option>8</option>
+					<option>9</option>
+					<option>10</option>
+					<option>11</option>
+					<option>12</option>
+			</select> - Скорость игры <br />
+				<button id="startGame" style="width: 150px;">Старт</button><br />
+				<button id="stopGame" style="width: 150px;">Стоп</button></td>
+		</tr>
+	</table>
+
+</body>
+</html>
